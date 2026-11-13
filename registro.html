@@ -161,7 +161,7 @@
 
     <script>
         
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVoTdIbszSgNtk75E3p7c1Vle-DDtNZnXIQtzAC83PYZGuOq0KX3MFhF6vOVeV7Ri-/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIdrEY_NY3-fTFbaf5RLcPG4ffjWmT_zgCUIDF0AAPbIu_GlNlnYKl4f5dr-zidoq7/exec";
 
 document.getElementById('registroForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -192,7 +192,7 @@ document.getElementById('registroForm').addEventListener('submit', function(e) {
             document.getElementById('ticket-num').textContent = data.folio;
             document.getElementById('ticket-nombre').textContent = payload.nombre;
             document.getElementById('ticket-detalle').textContent = 
-            `Categoría: ${payload.categoria} ${payload.personaje ? '(' + payload.personaje + ')' : ''} | Asignado a: ${data.grupo || "Grupo A"}`;
+                `Categoría: ${payload.categoria} ${payload.personaje ? '(' + payload.personaje + ')' : ''} | Asignado a: ${data.grupo}`;
 
             document.getElementById('form-container').classList.add('hidden');
             document.getElementById('ticket-container').classList.remove('hidden');
