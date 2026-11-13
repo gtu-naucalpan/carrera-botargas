@@ -161,52 +161,65 @@
 
     <script>
         
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIdrEY_NY3-fTFbaf5RLcPG4ffjWmT_zgCUIDF0AAPbIu_GlNlnYKl4f5dr-zidoq7/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIdrEY_NY3-fTFbaf5RLcPG4ffjWmT_zgCUIDF0AAPbIu_GlNlnYKl4f5dr-zidoq7/exec";
 
-        document.getElementById('registroForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const btnSubmit = this.querySelector('button[type="submit"]');
-            const textoOriginal = btnSubmit.textContent;
-            
-            btnSubmit.disabled = true;
-            btnSubmit.textContent = "REGISTRANDO...";
-            btnSubmit.classList.add("opacity-70", "cursor-not-allowed");
+document.getElementById('registroForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const btnSubmit = this.querySelector('button[type="submit"]');
+    const textoOriginal = btnSubmit.textContent;
+    
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = "REGISTRANDO...";
+    btnSubmit.classList.add("opacity-70", "cursor-not-allowed");
 
-            const payload = {
-                nombre: document.getElementById('nombre').value.trim(),
-                matricula: document.getElementById('matricula').value.trim(),
-                telefono: document.getElementById('telefono').value.trim(),
-                carrera: document.getElementById('carrera').value.trim(),
-                categoria: document.querySelector('input[name="categoria"]:checked').value,
-                personaje: document.getElementById('personaje').value.trim()
-            };
+    const payload = {
+        nombre: document.getElementById('nombre').value.trim(),
+        matricula: document.getElementById('matricula').value.trim(),
+        telefono: document.getElementById('telefono').value.trim(),
+        carrera: document.getElementById('carrera').value.trim(),
+        categoria: document.querySelector('input[name="categoria"]:checked').value,
+        personaje: document.getElementById('personaje').value.trim()
+    };
 
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: JSON.stringify(payload)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === "success") {
-                    document.getElementById('ticket-num').textContent = data.folio;
-                    document.getElementById('ticket-nombre').textContent = payload.nombre;
-                    document.getElementById('ticket-detalle').textContent = 
-                        `Categoría: ${payload.categoria} ${payload.personaje ? '(' + payload.personaje + ')' : ''}`;
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            document.getElementById('ticket-num').textContent = data.folio;
+            document.getElementById('ticket-nombre').textContent = payload.nombre;
+            document.getElementById('ticket-detalle').textContent = 
+                `Categoría: ${payload.categoria} ${payload.personaje ? '(' + payload.personaje + ')' : ''} | Asignado a: ${data.grupo}`;
 
-                    document.getElementById('form-container').classList.add('hidden');
-                    document.getElementById('ticket-container').classList.remove('hidden');
-                } else {
-                    throw new Error("Error en la respuesta");
-                }
-            })
-            .catch(error => {
-                alert("Hubo un problema al conectar con el servidor. Intenta de nuevo.");
-                btnSubmit.disabled = false;
-                btnSubmit.textContent = textoOriginal;
-                btnSubmit.classList.remove("opacity-70", "cursor-not-allowed");
-            });
-        });
+            document.getElementById('form-container').classList.add('hidden');
+            document.getElementById('ticket-container').classList.remove('hidden');
+        } 
+        else if (data.status === "duplicate") {
+            alert(data.message); // Alerta de matrícula duplicada
+            btnSubmit.disabled = false;
+            btnSubmit.textContent = textoOriginal;
+            btnSubmit.classList.remove("opacity-70", "cursor-not-allowed");
+        } 
+        else if (data.status === "closed") {
+            alert(data.message); // Alerta de registros agotados
+            location.reload();
+        } 
+        else {
+            throw new Error("Error en la respuesta");
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("Hubo un problema al conectar con el servidor. Intenta de nuevo.");
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = textoOriginal;
+        btnSubmit.classList.remove("opacity-70", "cursor-not-allowed");
+    });
+});
+
     </script>
 </body>
 </html>
