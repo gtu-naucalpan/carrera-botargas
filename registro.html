@@ -192,7 +192,7 @@ document.getElementById('registroForm').addEventListener('submit', function(e) {
             document.getElementById('ticket-num').textContent = data.folio;
             document.getElementById('ticket-nombre').textContent = payload.nombre;
             document.getElementById('ticket-detalle').textContent = 
-                `Categoría: ${payload.categoria} ${payload.personaje ? '(' + payload.personaje + ')' : ''} | Asignado a: ${data.grupo}`;
+            `Categoría: ${payload.categoria} ${payload.personaje ? '(' + payload.personaje + ')' : ''} | Asignado a: ${data.grupo || "Grupo A"}`;
 
             document.getElementById('form-container').classList.add('hidden');
             document.getElementById('ticket-container').classList.remove('hidden');
