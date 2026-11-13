@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pijamas y Botargas | GTU Naucalpan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle at 50% 15%, #1a4380 0%, #09152b 65%, #040914 100%);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+        .font-comic {
+            font-family: 'Luckiest Guy', cursive;
+            letter-spacing: 1.5px;
+            text-shadow: 3px 3px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+        }
+        .btn-comic {
+            background: linear-gradient(180deg, #fcd34d 0%, #f59e0b 100%);
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0px #000;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+            display: inline-block;
+        }
+        .btn-comic:hover {
+            filter: brightness(1.05);
+        }
+        .btn-comic:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000;
+        }
+        .stars {
+            background-image: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 40px 70px, #fcd34d, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 160px 120px, #fcd34d, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            opacity: 0.35;
+        }
+    </style>
+</head>
+<body class="relative py-8 px-4">
+    <!-- Capa de destellos -->
+    <div class="stars fixed inset-0 pointer-events-none"></div>
+
+    <main class="relative z-10 max-w-2xl mx-auto">
+        <!-- Hero / Portada -->
+        <header class="text-center mb-8">
+            <span class="inline-block bg-blue-900/80 border border-blue-400/30 text-blue-200 text-xs font-semibold px-3 py-1 rounded-full mb-3 tracking-wider uppercase">
+                Grupo Tecnológico Universitario • Campus Naucalpan
+            </span>
+            <h1 class="font-comic text-4xl sm:text-6xl text-white leading-tight mb-3">
+                1° CARRERA DE <span class="text-amber-400">PIJAMAS</span> Y <span class="text-green-400">BOTARGAS</span>
+            </h1>
+            <p class="text-blue-200 text-sm sm:text-base max-w-lg mx-auto mb-6">
+                ¡Cierra el año corriendo con estilo navideño! Demuestra tu velocidad, creatividad y espíritu en la pista.
+            </p>
+
+        </header>
+
+        <!-- Datos Clave del Evento -->
+        <section class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+            <div class="glass-card rounded-xl p-4 text-center">
+                <p class="text-xs text-amber-300 uppercase font-bold mb-1">📅 Fecha</p>
+                <p class="font-bold text-lg">Martes 15 Dic</p>
+                <p class="text-xs text-blue-200">!Inscripciones Abiertas¡</p>
+            </div>
+            <div class="glass-card rounded-xl p-4 text-center">
+                <p class="text-xs text-amber-300 uppercase font-bold mb-1">📍 Punto de Reunión</p>
+                <p class="font-bold text-lg">GTU Naucalpan</p>
+                <p class="text-xs text-blue-200">Canchas de Futboll</p>
+            </div>
+            <div class="glass-card rounded-xl p-4 text-center">
+                <p class="text-xs text-amber-300 uppercase font-bold mb-1">🎟️ Costo</p>
+                <p class="font-bold text-lg text-green-400">¡Gratis!</p>
+                <p class="text-xs text-blue-200">Comunidad GTU</p>
+            </div>
+        </section>
+
+        <!-- Bases y Convocatoria -->
+        <section class="glass-card rounded-2xl p-6 sm:p-8 mb-8 space-y-6">
+            <h2 class="font-comic text-3xl text-amber-400 text-center border-b border-white/15 pb-3">
+                BASES DE LA CARRERA
+            </h2>
+
+            <!-- 1. Participantes -->
+            <div>
+                <h3 class="font-bold text-lg text-amber-300 flex items-center gap-2 mb-1">
+                    <span>1.</span> ¿Quiénes pueden participar?
+                </h3>
+                <p class="text-sm text-blue-100 leading-relaxed">
+                    Todos los alumnos activos de Bachillerato <strong>GTU Campus Naucalpan</strong>. Es indispensable registrar tus datos de forma correcta al momento de tu registro en línea ya que el día del evento se estara pasando lista.
+                </p>
+            </div>
+
+            <!-- 2. Categorías -->
+            <div>
+                <h3 class="font-bold text-lg text-amber-300 flex items-center gap-2 mb-2">
+                    <span>2.</span> Categorías
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="bg-slate-900/60 border border-amber-400/30 rounded-xl p-4">
+                        <p class="font-bold text-amber-400 mb-1">🛌 Categoría Pijama</p>
+                        <p class="text-xs text-blue-100">
+                            Deberás correr portando pijama completa (mameluco, conjunto navideño, gorro de dormir, etc.).
+                        </p>
+                    </div>
+                    <div class="bg-slate-900/60 border border-green-400/30 rounded-xl p-4">
+                        <p class="font-bold text-green-400 mb-1">🦖 Categoría Botarga</p>
+                        <p class="text-xs text-blue-100">
+                            Abierta para botargas inflables, disfraces de cuerpo completo o personajes navideños.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Reglas y Seguridad -->
+            <div>
+                <h3 class="font-bold text-lg text-amber-300 flex items-center gap-2 mb-1">
+                    <span>3.</span> Reglas Generales y Seguridad
+                </h3>
+                <ul class="text-sm text-blue-100 space-y-1.5 list-disc list-inside">
+                    <li>Por seguridad, <strong>es obligatorio usar tenis deportivos</strong> (no se permite correr en pantuflas o calcetines).</li>
+                    <li>El vestuario no debe obstruir por completo la visibilidad ni representar un riesgo para otros corredores.</li>
+                    <li>Preséntate 20 minutos antes del arranque para validar tu <strong>Número de Corredor</strong>.</li>
+                </ul>
+            </div>
+
+            <!-- 4. Premiación -->
+            <div>
+                <h3 class="font-bold text-lg text-amber-300 flex items-center gap-2 mb-1">
+                    <span>4.</span> Bases de la Premiación
+                </h3> 
+
+                <p class="text-sm text-blue-100 leading-relaxed">
+                    La 1° Carrera de Pijamas y Botargas se divide en dos grandes bloques independientes (Grupo A y Grupo B) antes de llegar a la gran final:
+                </p><hr>
+
+                <p class="text-sm text-blue-100 leading-relaxed">
+                    <strong>Fase 1: Clasificación (3 Carreras por grupo)</strong>
+                <ul class="text-sm text-blue-100 space-y-1.5 list-disc list-inside">
+                    <li><strong>Dinamica:</strong> Los corredores compiten en 3 bloques de 9 integrantes por carrera, y únicamente 4 corredores avanzan por cada bloque.</li>
+                </ul>
+                </p><hr>
+
+                <p class="text-sm text-blue-100 leading-relaxed">
+                    <strong>Fase 2: Semifinales (3 carreras por grupo)</strong>
+                    <ul class="text-sm text-blue-100 space-y-1.5 list-disc list-inside">
+                    <li><strong>Dinamica:</strong> Los corredores clasificados compiten en 3 bloques de 4 integrantes por carrera, y únicamente 1 corredor avanza por cada bloque.</li>
+                </ul>
+                </p><hr>
+
+                <p class="text-sm text-blue-100 leading-relaxed">
+                    <strong>Fase 3: La Batalla Final</strong>
+                    <ul class="text-sm text-blue-100 space-y-1.5 list-disc list-inside">
+                    <li><strong>Dinamica:</strong> Los ganadores de las semifinales de cada bando se cruzan (por ejemplo, 3 finalistas del Grupo A contra 3 finalistas del Grupo B, sumando 6 corredores en la pista)</li>
+                    <p><strong>El Podio:</strong> De esta última carrera masiva se definen los puestos definitivos cruzando la meta:</p>
+                    <li>🥇 Primer Lugar</li>
+                    <li>🥈 Segundo Lugar</li>
+                    <li>🥉 Tercer Lugar</li>
+
+                    <p>Al finalizar se hara la entrega de premios y medallas.</p>
+
+                </ul>
+                </p>
+
+            </div>
+        </section>
+
+        <!-- Llamada a la acción inferior -->
+        <footer class="text-center pb-6">
+            <p class="text-sm text-blue-200 mb-4">¿Ya tienes listo tu outfit navideño? Asegura tu lugar ahora mismo.</p>
+            <a href="registro.html" class="btn-comic w-full sm:w-auto px-10 py-4 rounded-xl font-comic text-2xl tracking-wider uppercase">
+                Ir al Formulario de Registro →
+            </a>
+        </footer>
+    </main>
+</body>
+</html>

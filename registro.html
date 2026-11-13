@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | GTU Naucalpan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle at 50% 20%, #1a4380 0%, #09152b 65%, #040914 100%);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+        .font-comic {
+            font-family: 'Luckiest Guy', cursive;
+            letter-spacing: 1.5px;
+            text-shadow: 3px 3px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+        }
+        .btn-comic {
+            background: linear-gradient(180deg, #fcd34d 0%, #f59e0b 100%);
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0px #000;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+        .btn-comic:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000;
+        }
+        /* Destellos sutiles en el fondo */
+        .stars {
+            background-image: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 40px 70px, #fcd34d, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 160px 120px, #fcd34d, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            opacity: 0.35;
+        }
+    </style>
+</head>
+<body class="relative py-8 px-4">
+    <!-- Capa de destellos -->
+    <div class="stars fixed inset-0 pointer-events-none"></div>
+
+    <main class="relative z-10 max-w-md mx-auto">
+        <!-- Encabezado Institucional -->
+        <header class="text-center mb-6">
+            <span class="inline-block bg-blue-900/80 border border-blue-400/30 text-blue-200 text-xs font-semibold px-3 py-1 rounded-full mb-3 tracking-wider uppercase">
+                Grupo Tecnológico Universitario • Campus Naucalpan
+            </span>
+            <h1 class="font-comic text-4xl sm:text-5xl text-white leading-tight mb-2">
+                1° CARRERA DE <span class="text-amber-400">PIJAMAS</span> Y <span class="text-green-400">BOTARGAS</span>
+            </h1>
+        </header>
+
+        <!-- Info Rápida -->
+        <div class="grid grid-cols-2 gap-3 mb-6">
+            <div class="glass-card rounded-xl p-3 text-center">
+                <p class="text-xs text-amber-300 uppercase font-bold">Fecha</p>
+                <p class="font-bold text-lg">Martes 15 Dic</p>
+            </div>
+            <div class="glass-card rounded-xl p-3 text-center">
+                <p class="text-xs text-amber-300 uppercase font-bold">Sede</p>
+                <p class="font-bold text-lg">GTU Naucalpan</p>
+            </div>
+        </div>
+
+        <!-- Formulario de Registro -->
+        <section id="form-container" class="glass-card rounded-2xl p-6">
+            <h2 class="font-comic text-2xl text-amber-400 mb-4 text-center">¡REGÍSTRATE AQUÍ!</h2>
+            
+            <form id="registroForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-blue-200 mb-1">Nombre Completo</label>
+                    <input type="text" id="nombre" required placeholder="Ej. David Sanchez"
+                        class="w-full px-4 py-2.5 rounded-lg bg-slate-900/70 border border-blue-400/30 text-white placeholder-slate-400 focus:outline-none focus:border-amber-400">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-blue-200 mb-1">Matrícula</label>
+                        <input type="text" id="matricula" required placeholder="Ej. 20260192"
+                            class="w-full px-4 py-2.5 rounded-lg bg-slate-900/70 border border-blue-400/30 text-white placeholder-slate-400 focus:outline-none focus:border-amber-400">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-blue-200 mb-1">WhatsApp</label>
+                        <input type="tel" id="telefono" required placeholder="55 1234 5678"
+                            class="w-full px-4 py-2.5 rounded-lg bg-slate-900/70 border border-blue-400/30 text-white placeholder-slate-400 focus:outline-none focus:border-amber-400">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-blue-200 mb-1">Grupo</label>
+                    <input type="text" id="carrera" required placeholder="Ej. BGA-101"
+                        class="w-full px-4 py-2.5 rounded-lg bg-slate-900/70 border border-blue-400/30 text-white placeholder-slate-400 focus:outline-none focus:border-amber-400">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-blue-200 mb-2">¿Con que vas a participar?</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="categoria" value="Pijama" class="peer sr-only" checked>
+                            <div class="p-3 text-center rounded-xl border border-blue-400/30 bg-slate-900/50 peer-checked:bg-amber-400 peer-checked:text-slate-950 peer-checked:font-bold transition">
+                                🛌 Pijama
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="categoria" value="Botarga" class="peer sr-only">
+                            <div class="p-3 text-center rounded-xl border border-blue-400/30 bg-slate-900/50 peer-checked:bg-green-400 peer-checked:text-slate-950 peer-checked:font-bold transition">
+                                🦖 Botarga
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-blue-200 mb-1">Nombre de tu Personaje (Opcional)</label>
+                    <input type="text" id="personaje" placeholder="Ej. El Grinch, Dinosaurio, Pijama de cuadros..."
+                        class="w-full px-4 py-2.5 rounded-lg bg-slate-900/70 border border-blue-400/30 text-white placeholder-slate-400 focus:outline-none focus:border-amber-400">
+                </div>
+
+                <button type="submit" class="btn-comic w-full py-3.5 rounded-xl font-comic text-xl tracking-wider uppercase mt-2">
+                    Confirmar Registro
+                </button>
+            </form>
+        </section>
+
+        <!-- Pase de Confirmación (Oculto inicialmente) -->
+        <section id="ticket-container" class="hidden glass-card rounded-2xl p-6 text-center border-2 border-amber-400">
+            <div class="inline-block bg-green-500/20 text-green-300 border border-green-400/40 px-3 py-1 rounded-full text-xs font-bold mb-2">
+                ✓ REGISTRO EXITOSO
+            </div>
+            <h2 class="font-comic text-3xl text-white mb-1">¡ESTÁS DENTRO!</h2>
+            <p class="text-xs text-blue-200 mb-4">Toma captura de pantalla a tu pase de corredor</p>
+            
+            <div class="bg-slate-900/90 rounded-xl p-4 border border-dashed border-amber-400/60 mb-4">
+                <p class="text-xs text-slate-400 uppercase">Número de Corredor</p>
+                <p id="ticket-num" class="font-comic text-5xl text-amber-400 my-1">#042</p>
+                <p id="ticket-nombre" class="font-bold text-lg text-white"></p>
+                <p id="ticket-detalle" class="text-sm text-green-400 font-semibold mt-1"></p>
+            </div>
+
+        </section>
+
+<div class="mb-4">
+    <a href="index.html" class="text-xs text-amber-300 hover:underline font-semibold">
+        ← Ver bases e información de la carrera
+    </a>
+</div>
+
+    </main>
+
+    <script>
+        
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIdrEY_NY3-fTFbaf5RLcPG4ffjWmT_zgCUIDF0AAPbIu_GlNlnYKl4f5dr-zidoq7/exec";
+
+        document.getElementById('registroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btnSubmit = this.querySelector('button[type="submit"]');
+            const textoOriginal = btnSubmit.textContent;
+            
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = "REGISTRANDO...";
+            btnSubmit.classList.add("opacity-70", "cursor-not-allowed");
+
+            const payload = {
+                nombre: document.getElementById('nombre').value.trim(),
+                matricula: document.getElementById('matricula').value.trim(),
+                telefono: document.getElementById('telefono').value.trim(),
+                carrera: document.getElementById('carrera').value.trim(),
+                categoria: document.querySelector('input[name="categoria"]:checked').value,
+                personaje: document.getElementById('personaje').value.trim()
+            };
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    document.getElementById('ticket-num').textContent = data.folio;
+                    document.getElementById('ticket-nombre').textContent = payload.nombre;
+                    document.getElementById('ticket-detalle').textContent = 
+                        `Categoría: ${payload.categoria} ${payload.personaje ? '(' + payload.personaje + ')' : ''}`;
+
+                    document.getElementById('form-container').classList.add('hidden');
+                    document.getElementById('ticket-container').classList.remove('hidden');
+                } else {
+                    throw new Error("Error en la respuesta");
+                }
+            })
+            .catch(error => {
+                alert("Hubo un problema al conectar con el servidor. Intenta de nuevo.");
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = textoOriginal;
+                btnSubmit.classList.remove("opacity-70", "cursor-not-allowed");
+            });
+        });
+    </script>
+</body>
+</html>
