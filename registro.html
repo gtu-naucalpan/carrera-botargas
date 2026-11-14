@@ -105,7 +105,7 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold uppercase text-blue-200 mb-2">¿Con que vas a participar?</label>
+                    <label class="block text-xs font-semibold uppercase text-blue-200 mb-2">¿Con qué vas a participar?</label>
                     <div class="grid grid-cols-2 gap-3">
                         <label class="cursor-pointer">
                             <input type="radio" name="categoria" value="Pijama" class="peer sr-only" checked>
@@ -146,80 +146,79 @@
                 <p class="text-xs text-slate-400 uppercase">Número de Corredor</p>
                 <p id="ticket-num" class="font-comic text-5xl text-amber-400 my-1">#042</p>
                 <p id="ticket-nombre" class="font-bold text-lg text-white"></p>
-                <p id="ticket-detalle" class="text-sm text-green-400 font-semibold mt-1"></p>
+                <p id="ticket-detalle" class="text-xs text-blue-200 mt-2"></p>
+                <p id="ticket-grupo" class="text-sm text-green-400 font-bold mt-1"></p>
             </div>
-
         </section>
 
-<div class="mb-4">
-    <a href="index.html" class="text-xs text-amber-300 hover:underline font-semibold">
-        ← Ver bases e información de la carrera
-    </a>
-</div>
-
+        <div class="mt-4 text-center">
+            <a href="index.html" class="text-xs text-amber-300 hover:underline font-semibold">
+                ← Ver bases e información de la carrera
+            </a>
+        </div>
     </main>
 
     <script>
-        
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIdrEY_NY3-fTFbaf5RLcPG4ffjWmT_zgCUIDF0AAPbIu_GlNlnYKl4f5dr-zidoq7/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxpTGmjiV2LN3A1bdrCPklNICuxH-bo8S079vJF8WQ7Fs523-H12Aztzb-icbjcwFSA/exec";
 
-document.getElementById('registroForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const btnSubmit = this.querySelector('button[type="submit"]');
-    const textoOriginal = btnSubmit.textContent;
-    
-    btnSubmit.disabled = true;
-    btnSubmit.textContent = "REGISTRANDO...";
-    btnSubmit.classList.add("opacity-70", "cursor-not-allowed");
+        document.getElementById('registroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btnSubmit = this.querySelector('button[type="submit"]');
+            const textoOriginal = btnSubmit.textContent;
+            
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = "REGISTRANDO...";
+            btnSubmit.classList.add("opacity-70", "cursor-not-allowed");
 
-    const payload = {
-        nombre: document.getElementById('nombre').value.trim(),
-        matricula: document.getElementById('matricula').value.trim(),
-        telefono: document.getElementById('telefono').value.trim(),
-        carrera: document.getElementById('carrera').value.trim(),
-        categoria: document.querySelector('input[name="categoria"]:checked').value,
-        personaje: document.getElementById('personaje').value.trim()
-    };
+            const payload = {
+                nombre: document.getElementById('nombre').value.trim(),
+                matricula: document.getElementById('matricula').value.trim(),
+                telefono: document.getElementById('telefono').value.trim(),
+                carrera: document.getElementById('carrera').value.trim(),
+                categoria: document.querySelector('input[name="categoria"]:checked').value,
+                personaje: document.getElementById('personaje').value.trim()
+            };
 
-    fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify(payload)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === "success") {
-            document.getElementById('ticket-num').textContent = data.folio;
-            document.getElementById('ticket-nombre').textContent = payload.nombre;
-            document.getElementById('ticket-detalle').textContent = 
-                `Categoría: ${payload.categoria} ${payload.personaje ? '(' + payload.personaje + ')' : ''} | Asignado a: ${data.grupo}`;
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    document.getElementById('ticket-num').textContent = data.folio;
+                    document.getElementById('ticket-nombre').textContent = payload.nombre;
+                    document.getElementById('ticket-detalle').textContent = 
+                        `Categoría: ${payload.categoria} ${payload.personaje ? '(' + payload.personaje + ')' : ''}`;
+                    document.getElementById('ticket-grupo').textContent = 
+                        `Asignado a: ${data.grupo || "Grupo A"}`;
 
-            document.getElementById('form-container').classList.add('hidden');
-            document.getElementById('ticket-container').classList.remove('hidden');
-        } 
-        else if (data.status === "duplicate") {
-            alert(data.message); // Alerta de matrícula duplicada
-            btnSubmit.disabled = false;
-            btnSubmit.textContent = textoOriginal;
-            btnSubmit.classList.remove("opacity-70", "cursor-not-allowed");
-        } 
-        else if (data.status === "closed") {
-            alert(data.message); // Alerta de registros agotados
-            location.reload();
-        } 
-        else {
-            throw new Error("Error en la respuesta");
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert("Hubo un problema al conectar con el servidor. Intenta de nuevo.");
-        btnSubmit.disabled = false;
-        btnSubmit.textContent = textoOriginal;
-        btnSubmit.classList.remove("opacity-70", "cursor-not-allowed");
-    });
-});
-
+                    document.getElementById('form-container').classList.add('hidden');
+                    document.getElementById('ticket-container').classList.remove('hidden');
+                } 
+                else if (data.status === "duplicate") {
+                    alert(data.message); // Alerta de matrícula duplicada
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = textoOriginal;
+                    btnSubmit.classList.remove("opacity-70", "cursor-not-allowed");
+                } 
+                else if (data.status === "closed") {
+                    alert(data.message); // Alerta de registros agotados
+                    location.reload();
+                } 
+                else {
+                    throw new Error("Error en la respuesta");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Hubo un problema al conectar con el servidor. Intenta de nuevo.");
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = textoOriginal;
+                btnSubmit.classList.remove("opacity-70", "cursor-not-allowed");
+            });
+        });
     </script>
 </body>
 </html>
